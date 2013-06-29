@@ -89,8 +89,6 @@ class XfluxController(object):
         preview_color = str(preview_color)
         self._set_xflux_screen_color(preview_color)
         self._c()
-        #while self.color != preview_color:
-            #time.sleep(.5)
         time.sleep(5)
         self._set_xflux_screen_color(return_color)
         self._c()
@@ -185,6 +183,7 @@ class _InitState(_XfluxState):
             self.controller_ref().init_kwargs[key] = str(value)
 
 class _TerminatedState(_XfluxState):
+    can_change_settings = False
     def stop(self):
         return True
 
